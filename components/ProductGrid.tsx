@@ -28,8 +28,7 @@ export default async function ProductGrid() {
 
   return (
     <div>
-      {/* Category filter — client side via URL */}
-      <div className="flex gap-2 flex-wrap mb-6">
+      <div className="flex gap-2 flex-wrap mb-4">
         {categories.map((cat) => (
           <span
             key={cat}
@@ -40,7 +39,7 @@ export default async function ProductGrid() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-2">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
