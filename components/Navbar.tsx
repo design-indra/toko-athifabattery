@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { ShoppingCart, Zap, Menu, X } from 'lucide-react'
+import Image from 'next/image'
+import { ShoppingCart, Menu, X } from 'lucide-react'
 import { useCart } from '@/hooks/useCart'
 import ThemeToggle from './ThemeToggle'
 import { useState } from 'react'
@@ -19,13 +20,15 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-700">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-xl shrink-0">
-          <span className="w-8 h-8 bg-amber-500 rounded-xl flex items-center justify-center">
-            <Zap size={18} className="text-white" />
-          </span>
-          <span className="text-slate-900 dark:text-white">
-            Athifa<span className="text-amber-500">battery</span>
-          </span>
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/athifabattery-logo.png"
+            alt="Athifa Battery"
+            width={160}
+            height={48}
+            className="h-10 w-auto object-contain dark:brightness-90"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -57,7 +60,6 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Mobile menu button */}
           <button
             className="md:hidden w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700"
             onClick={() => setMenuOpen(!menuOpen)}
