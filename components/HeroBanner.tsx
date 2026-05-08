@@ -1,28 +1,43 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const banners = [
   {
     title: '🔋 Aki Mobil Terbaik',
     subtitle: 'GS Astra, Yuasa, Massiv tersedia. Harga langsung dari distributor!',
-    bg: 'from-amber-500 to-orange-600',
+    image: '/banner1.jpg',
     cta: 'Lihat Produk',
     href: '#produk',
   },
   {
     title: '⚡ Diskon s/d 15%',
     subtitle: 'Promo aki motor & mobil pilihan. Stok terbatas, pesan sekarang!',
-    bg: 'from-blue-600 to-indigo-700',
+    image: '/banner2.jpg',
     cta: 'Pesan Sekarang',
     href: `https://wa.me/6287882385071?text=${encodeURIComponent('Halo, saya ingin tanya promo aki 👋')}`,
   },
   {
     title: '🚗 COD & Antar Lokasi',
     subtitle: 'Bayar di tempat, transfer bank, atau datang langsung ke toko kami.',
-    bg: 'from-emerald-500 to-teal-600',
+    image: '/banner3.jpg',
     cta: 'Lihat Lokasi',
     href: '/lokasi',
+  },
+  {
+    title: '🔧 Servis & Ganti Aki',
+    subtitle: 'Teknisi berpengalaman, ganti aki cepat di tempat.',
+    image: '/banner4.jpg',
+    cta: 'Hubungi Kami',
+    href: `https://wa.me/6287882385071?text=${encodeURIComponent('Halo, mau tanya servis aki 👋')}`,
+  },
+  {
+    title: '🏍️ Aki Motor Murah',
+    subtitle: 'Tersedia aki motor semua merk. Garansi resmi pabrik.',
+    image: '/banner5.jpg',
+    cta: 'Lihat Motor',
+    href: '#produk',
   },
 ]
 
@@ -37,12 +52,21 @@ export default function HeroBanner() {
   const b = banners[current]
 
   return (
-    <div className={`relative bg-gradient-to-r ${b.bg} rounded-2xl overflow-hidden transition-all duration-500`}>
-      <div className="max-w-6xl mx-auto px-6 py-12 md:py-16 flex flex-col gap-4">
+    <div className="relative rounded-2xl overflow-hidden h-56 md:h-72">
+      <Image
+        src={b.image}
+        alt={b.title}
+        fill
+        className="object-cover transition-all duration-500"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/45" />
+
+      <div className="relative z-10 px-6 py-10 md:py-14 flex flex-col gap-3 h-full justify-center">
         <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight slide-in">
           {b.title}
         </h1>
-        <p className="text-white/80 text-sm md:text-base max-w-lg slide-in">
+        <p className="text-white/90 text-sm md:text-base max-w-lg slide-in">
           {b.subtitle}
         </p>
         <Link
@@ -53,8 +77,7 @@ export default function HeroBanner() {
         </Link>
       </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-6 flex gap-2">
+      <div className="absolute bottom-4 left-6 flex gap-2 z-10">
         {banners.map((_, i) => (
           <button
             key={i}
@@ -63,10 +86,6 @@ export default function HeroBanner() {
           />
         ))}
       </div>
-
-      {/* Decorative */}
-      <div className="absolute -right-8 -top-8 w-48 h-48 bg-white/10 rounded-full" />
-      <div className="absolute -right-4 bottom-0 w-32 h-32 bg-white/5 rounded-full" />
     </div>
   )
 }
