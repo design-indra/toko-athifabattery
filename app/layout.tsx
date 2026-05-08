@@ -38,8 +38,8 @@ const localBusinessSchema = {
   url: 'https://athifabattery.vercel.app',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Kota Anda',
-    addressRegion: 'Provinsi Anda',
+    addressLocality: 'Bojonegara',
+    addressRegion: 'Banten',
     addressCountry: 'ID',
   },
   openingHours: 'Mo-Sa 08:00-17:00',

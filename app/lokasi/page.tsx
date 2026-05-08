@@ -51,7 +51,7 @@ export default function LokasiPage() {
               <p className="font-semibold text-sm">Alamat</p>
               <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
                 Jl. Contoh No. 123<br />
-                Kota Anda, Provinsi Anda<br />
+                Jl. Raya Bojonegara, Kp. Gedong, Kec. Bojonegara, Kab. Serang, Banten 42161<br />
                 <em className="text-xs">(Update sesuai alamat asli)</em>
               </p>
             </div>
