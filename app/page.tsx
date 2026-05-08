@@ -83,6 +83,24 @@ export default function HomePage() {
             </a>
           </div>
         </section>
+      {/* Testimoni */}
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold">⭐ Testimoni Pelanggan</h2>
+        <div className="space-y-3">
+          {[
+            { name: "Maryati", lokasi: "Cilegon", judul: "Lengkap Produk Akinya", pesan: "Sangat lengkap produk-produk Accu / akinya, ini beli Aki yang ke 2 kalinya, sangat memuaskan pelayanannya. Sukses terus untuk Toko Athifa Battery!" },
+            { name: "Rosidi", lokasi: "Kramatwatu", judul: "Terpercaya", pesan: "Kualitasnya terjamin dan pelayanannya sangat oke, cukup telp Aki langsung diantar ke rumah." },
+            { name: "Abdullah", lokasi: "Rangkas", judul: "Tukar Tambah", pesan: "Sangat terbantu dengan layanan tukar tambah Aki, gak mengurangi kualitas yang diberikan. Produknya juga original." },
+          ].map((t) => (
+            <div key={t.name} className="card p-4 space-y-1">
+              <div className="flex gap-0.5">{"★★★★★".split("").map((s,i) => <span key={i} className="text-amber-400">{s}</span>)}</div>
+              <p className="font-bold text-sm">{t.judul}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 italic">"{t.pesan}"</p>
+              <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 pt-1">{t.name} / {t.lokasi}</p>
+            </div>
+          ))}
+        </div>
+      </section>
       </main>
       <Footer />
     </>
