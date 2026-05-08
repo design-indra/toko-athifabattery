@@ -1,3 +1,5 @@
+import ReviewForm from '@/components/ReviewForm'
+import ReviewList from '@/components/ReviewList'
 import { Suspense } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -23,7 +25,7 @@ export default function HomePage() {
         {/* Deskripsi Toko */}
         <section className="card p-5 border-l-4 border-amber-500">
           <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            <span className="font-semibold text-slate-800 dark:text-white">Toko Aki Athifa Battery</span> melayani jual beli Accu / Aki motor dan mobil baru maupun second. Produk kami original dan bergaransi dengan harga terjangkau. Selain jual beli Aki, kami pun membeli aki bekas Anda dan menerima tukar tambah Aki juga setroom Aki. Dengan cabang yang tersebar di Banten, kami memberikan layanan antar dan pasang di wilayah Banten, khususnya <span className="font-medium text-amber-600 dark:text-amber-400">Serang – Cilegon</span>.
+            <span className="font-semibold text-slate-800 dark:text-white">Toko Aki Athifa Battery</span> melayani jual beli Accu / Aki motor dan mobil baru maupun second. Produk kami original dan bergaransi dengan harga terjangkau. Selain jual beli Aki, kami pun membeli aki bekas Anda dan menerima tukar tambah Aki juga setroom Aki. kami memberikan layanan antar dan pasang di wilayah Banten, khususnya <span className="font-medium text-amber-600 dark:text-amber-400">Serang – Cilegon</span>.
           </p>
         </section>
 
@@ -83,24 +85,14 @@ export default function HomePage() {
             </a>
           </div>
         </section>
-      {/* Testimoni */}
-      <section className="space-y-4">
-        <h2 className="text-xl font-bold">⭐ Testimoni Pelanggan</h2>
-        <div className="space-y-3">
-          {[
-            { name: "Maryati", lokasi: "Cilegon", judul: "Lengkap Produk Akinya", pesan: "Sangat lengkap produk-produk Accu / akinya, ini beli Aki yang ke 2 kalinya, sangat memuaskan pelayanannya. Sukses terus untuk Toko Athifa Battery!" },
-            { name: "Rosidi", lokasi: "Kramatwatu", judul: "Terpercaya", pesan: "Kualitasnya terjamin dan pelayanannya sangat oke, cukup telp Aki langsung diantar ke rumah." },
-            { name: "Abdullah", lokasi: "Rangkas", judul: "Tukar Tambah", pesan: "Sangat terbantu dengan layanan tukar tambah Aki, gak mengurangi kualitas yang diberikan. Produknya juga original." },
-          ].map((t) => (
-            <div key={t.name} className="card p-4 space-y-1">
-              <div className="flex gap-0.5">{"★★★★★".split("").map((s,i) => <span key={i} className="text-amber-400">{s}</span>)}</div>
-              <p className="font-bold text-sm">{t.judul}</p>
-              <p className="text-sm text-slate-600 dark:text-slate-300 italic">"{t.pesan}"</p>
-              <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 pt-1">{t.name} / {t.lokasi}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+{/* Testimoni */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-bold">⭐ Ulasan Pelanggan</h2>
+          <ReviewForm />
+          <Suspense fallback={<p className="text-sm text-slate-400">Memuat ulasan...</p>}>
+            <ReviewList />
+          </Suspense>
+        </section>
       </main>
       <Footer />
     </>
