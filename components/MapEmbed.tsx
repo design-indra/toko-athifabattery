@@ -1,7 +1,7 @@
 // Ganti koordinat sesuai lokasi toko Anda
 // Cara dapat koordinat: buka Google Maps → klik lokasi → copy lat,lng dari URL
-const LAT = -6.2088
-const LNG = 106.8456
+const LAT = -5.971362
+const LNG = 106.095145
 const STORE_NAME = 'Toko Athifabattery'
 
 export default function MapEmbed() {
