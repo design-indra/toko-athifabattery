@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://athifabattery.vercel.app'),
@@ -11,12 +8,8 @@ export const metadata: Metadata = {
     default: 'Toko Athifabattery — Aki Mobil & Motor Terpercaya',
     template: '%s | Toko Athifabattery',
   },
-  description:
-    'Toko aki terpercaya. Jual aki mobil, motor, truk: GS Astra, Yuasa, Massiv. Harga terbaik, COD, transfer, atau datang langsung. WA: 087882385071',
-  keywords: [
-    'toko aki', 'aki mobil', 'aki motor', 'GS Astra', 'Yuasa', 'Massiv',
-    'aki murah', 'aki terdekat', 'Athifabattery', 'beli aki online',
-  ],
+  description: 'Toko aki terpercaya. Jual aki mobil, motor, truk: GS Astra, Yuasa, Massiv. Harga terbaik, COD, transfer, atau datang langsung. WA: 087882385071',
+  keywords: ['toko aki', 'aki mobil', 'aki motor', 'GS Astra', 'Yuasa', 'Massiv', 'aki murah', 'aki terdekat', 'Athifabattery', 'beli aki online'],
   openGraph: {
     type: 'website',
     locale: 'id_ID',
@@ -33,13 +26,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   manifest: '/manifest.json',
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/icons/icon-192.png',
-  },
+  icons: { icon: '/favicon.ico', apple: '/icons/icon-192.png' },
 }
 
-// Schema.org LocalBusiness
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'AutoPartsStore',
@@ -58,20 +47,23 @@ const localBusinessSchema = {
   paymentAccepted: 'Cash, Transfer Bank, COD',
   currenciesAccepted: 'IDR',
   hasMap: 'https://maps.google.com/?q=-6.2,106.8',
-  sameAs: [`https://wa.me/6287882385071`],
+  sameAs: ['https://wa.me/6287882385071'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <meta name="theme-color" content="#f59e0b" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
         </ThemeProvider>
