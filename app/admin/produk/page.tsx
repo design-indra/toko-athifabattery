@@ -148,7 +148,7 @@ export default function AdminProdukPage() {
                 {form.image_url && (
                   <Image src={form.image_url} alt="preview" width={80} height={80} className="rounded-xl object-contain bg-slate-100 p-2" />
                 )}
-                <label className="btn-outline cursor-pointer flex items-center gap-2 text-sm py-2">
+                <label className="btn-outline cursor-pointer flex items-center gap-2 text-sm py-2" onClick={e => e.stopPropagation()}>
                   <Upload size={15} />
                   {uploading ? 'Mengupload...' : 'Upload Foto'}
                   <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={uploading} />
