@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Package, ShoppingBag, TrendingUp, LogOut, Zap, Users } from 'lucide-react'
+import { Package, ShoppingBag, TrendingUp, LogOut, Zap, Users, Star } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { formatRupiah } from '@/lib/whatsapp'
 
@@ -76,6 +76,7 @@ export default function AdminDashboard() {
           <Link href="/" className="text-slate-400 hover:text-white transition-colors">Lihat Toko</Link>
           <Link href="/admin/produk" className="text-slate-400 hover:text-white transition-colors">Produk</Link>
           <Link href="/admin/pesanan" className="text-slate-400 hover:text-white transition-colors">Pesanan</Link>
+          <Link href="/admin/ulasan" className="text-slate-400 hover:text-white transition-colors">Ulasan</Link>
           <button onClick={handleLogout} className="flex items-center gap-1 text-red-400 hover:text-red-300">
             <LogOut size={15} /> Keluar
           </button>
