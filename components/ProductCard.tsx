@@ -73,21 +73,23 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Buttons */}
         <div className="flex gap-1 mt-1">
+          {/* Keranjang: icon only */}
           <button
             onClick={handleAddCart}
             disabled={isOutOfStock}
-            className="flex-1 flex items-center justify-center gap-1 btn-outline text-[10px] py-1.5 px-1 disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Tambah ke keranjang"
+            className={`flex items-center justify-center btn-outline p-2 disabled:opacity-40 disabled:cursor-not-allowed ${added ? 'border-green-500 text-green-500' : ''}`}
           >
-            <ShoppingCart size={11} />
-            {added ? '✓' : 'Keranjang'}
+            {added ? '✓' : <ShoppingCart size={14} />}
           </button>
+          {/* Pesan: full width */}
           <a
             href={generateSingleWALink(product.name, product.price, product.discount_percent)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1 btn-primary text-[10px] py-1.5 px-1"
+            className="flex-1 flex items-center justify-center gap-1 btn-primary text-[11px] py-2 px-2"
           >
-            <MessageCircle size={11} />
+            <MessageCircle size={12} />
             Pesan
           </a>
         </div>
