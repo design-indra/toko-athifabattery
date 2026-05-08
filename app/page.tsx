@@ -1,5 +1,6 @@
 import ReviewForm from '@/components/ReviewForm'
 import ReviewList from '@/components/ReviewList'
+import Gallery from '@/components/Gallery'
 import { Suspense } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -85,6 +86,8 @@ export default function HomePage() {
             </a>
           </div>
         </section>
+<Gallery />
+
 {/* Testimoni */}
         <section className="space-y-4">
           <h2 className="text-xl font-bold">⭐ Ulasan Pelanggan</h2>
