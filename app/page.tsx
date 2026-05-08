@@ -20,6 +20,13 @@ export default function HomePage() {
         {/* Hero */}
         <HeroBanner />
 
+        {/* Deskripsi Toko */}
+        <section className="card p-5 border-l-4 border-amber-500">
+          <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            <span className="font-semibold text-slate-800 dark:text-white">Toko Aki Athifa Battery</span> melayani jual beli Accu / Aki motor dan mobil baru maupun second. Produk kami original dan bergaransi dengan harga terjangkau. Selain jual beli Aki, kami pun membeli aki bekas Anda dan menerima tukar tambah Aki juga setroom Aki. Dengan cabang yang tersebar di Banten, kami memberikan layanan antar dan pasang di wilayah Banten, khususnya <span className="font-medium text-amber-600 dark:text-amber-400">Serang – Cilegon</span>.
+          </p>
+        </section>
+
         {/* Features */}
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {features.map((f) => (
@@ -52,22 +59,6 @@ export default function HomePage() {
           >
             <ProductGrid />
           </Suspense>
-        </section>
-
-        {/* CTA WA */}
-        <section className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-center text-white">
-          <h2 className="text-xl md:text-2xl font-bold mb-2">Ada pertanyaan? Chat langsung!</h2>
-          <p className="text-white/80 text-sm mb-5">
-            Admin kami siap membantu Anda memilih aki yang tepat.
-          </p>
-          <a
-            href={`https://wa.me/6287882385071?text=${encodeURIComponent('Halo Athifabattery, saya ingin tanya tentang produk aki 👋')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white text-green-700 font-bold px-6 py-3 rounded-xl hover:scale-105 transition-transform shadow-lg"
-          >
-            💬 Chat WhatsApp Sekarang
-          </a>
         </section>
       </main>
       <Footer />
