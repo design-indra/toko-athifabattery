@@ -26,7 +26,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li className="flex items-start gap-2">
               <MapPin size={15} className="text-amber-400 mt-0.5 shrink-0" />
-              <span>Jl. Raya Bojonegara, Kp. Gedong, Kec. Bojonegara, Kab. Serang, Banten 42161 (Update di kode)</span>
+              <span>Jl. Raya Bojonegara, Kp. Gedong, Kec. Bojonegara, Kab. Serang, Banten 4216 </span>
             </li>
             <li className="flex items-center gap-2">
               <Phone size={15} className="text-amber-400 shrink-0" />
