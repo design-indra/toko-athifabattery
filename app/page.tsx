@@ -60,6 +60,29 @@ export default function HomePage() {
             <ProductGrid />
           </Suspense>
         </section>
+{/* Tentang Toko */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-bold">🏪 Tentang Toko Athifabattery</h2>
+          <div className="card p-5 space-y-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p>
+              Kami hadir memenuhi kebutuhan kendaraan anda yang memerlukan Aki seperti mobil dan motor. Kami juga menyediakan Aki kering untuk <span className="font-medium text-slate-800 dark:text-white">UPS, Genset, PLTS (Pembangkit Listrik Tenaga Surya), Aki Tower</span> dan juga Aki untuk alat-alat berat lainnya.
+            </p>
+            <p>
+              Dengan teknisi yang berpengalaman di bidangnya, kami didukung dengan penyediaan produk asli dan bergaransi dan juga terlengkap di <span className="font-medium text-amber-600 dark:text-amber-400">Kota Serang – Cilegon dan sekitarnya</span> karena kami distributor resmi dari beberapa merk ternama seperti <span className="font-medium text-slate-800 dark:text-white">GS dan Yuasa</span>.
+            </p>
+            <p>
+              Untuk meningkatkan pelayanan kami kepada pelanggan, kami memberikan <span className="font-medium text-slate-800 dark:text-white">service antar pasang</span> sesuai lokasi permintaan anda. Selain itu, Toko Athifa Battery menerima <span className="font-medium text-slate-800 dark:text-white">Aki bekas dengan harga yang bersaing</span>. Segera hubungi CS kami untuk kebutuhan kendaraan anda, kami akan melayani anda dengan cepat.
+            </p>
+            <a
+              href="https://wa.me/6287882385071?text=Halo,%20saya%20ingin%20tanya%20tentang%20produk%20aki%20👋"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2 mt-2"
+            >
+              💬 Hubungi CS Sekarang
+            </a>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
