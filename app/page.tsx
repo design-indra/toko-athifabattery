@@ -1,5 +1,6 @@
 import ReviewForm from '@/components/ReviewForm'
 import ReviewList from '@/components/ReviewList'
+import CekKompatibilitas from '@/components/CekKompatibilitas'
 import Gallery from '@/components/Gallery'
 import { Suspense } from 'react'
 import Navbar from '@/components/Navbar'
@@ -22,7 +23,7 @@ export default function HomePage() {
       <main className="max-w-6xl mx-auto px-4 py-6 space-y-10">
         {/* Hero */}
         <HeroBanner />
-
+<CekKompatibilitas />
         {/* Deskripsi Toko */}
         <section className="card p-5 border-l-4 border-amber-500">
           <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
