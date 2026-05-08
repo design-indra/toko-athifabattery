@@ -1,0 +1,223 @@
+╔══════════════════════════════════════════════════════════════╗
+║         🔋 TOKO ATHIFABATTERY — PANDUAN TERMUX              ║
+╚══════════════════════════════════════════════════════════════╝
+
+=====================================================
+LANGKAH 1 — PERSIAPAN TERMUX (Pertama kali saja)
+=====================================================
+
+# Update & install tools wajib
+pkg update -y && pkg upgrade -y
+pkg install -y nodejs git zip unzip nano
+
+# Cek versi Node.js (minimal v18)
+node -v
+npm -v
+
+=====================================================
+LANGKAH 2 — EXTRACT & MASUK FOLDER
+=====================================================
+
+# Pindah ke storage HP (agar mudah diakses)
+termux-setup-storage
+cd ~/storage/downloads
+
+# Extract file ZIP
+unzip toko-athifabattery.zip
+
+# Masuk ke folder proyek
+cd toko-athifabattery
+
+=====================================================
+LANGKAH 3 — SETUP OTOMATIS (Cara Mudah)
+=====================================================
+
+# Beri izin & jalankan setup script
+chmod +x setup.sh
+bash setup.sh
+
+# Script akan otomatis:
+# ✓ Update Termux
+# ✓ Install Node.js & git
+# ✓ npm install semua dependencies
+# ✓ Buat .env.local
+# ✓ Tanya mau jalankan dev server?
+
+=====================================================
+LANGKAH 4 — SETUP MANUAL (Alternatif)
+=====================================================
+
+# Install dependencies
+npm install
+
+# Buat file .env.local
+cp .env.example .env.local
+
+# Edit .env.local (isi Supabase URL & Key)
+nano .env.local
+
+  ── Isi bagian ini: ──────────────────────────────
+  NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
+  SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+  NEXT_PUBLIC_APP_URL=http://localhost:3000
+  ─────────────────────────────────────────────────
+
+  Simpan: Ctrl+O → Enter → Ctrl+X
+
+=====================================================
+LANGKAH 5 — SETUP SUPABASE (Di browser HP/PC)
+=====================================================
+
+1. Buka https://supabase.com → Sign up / Login
+2. Buat Project baru → catat URL & anon key
+3. Buka SQL Editor → paste isi file:
+   supabase/schema.sql → klik RUN
+4. Buka Storage → New Bucket:
+   Nama: products | Public: ✓ ON
+5. Buka Authentication → Users → Add User:
+   Email: admin@athifabattery.com
+   Password: (buat password kuat)
+
+=====================================================
+LANGKAH 6 — JALANKAN DEV SERVER
+=====================================================
+
+# Jalankan di Termux
+npm run dev
+
+# Buka di browser HP:
+# http://localhost:3000         ← Toko
+# http://localhost:3000/admin   ← Panel Admin
+
+=====================================================
+LANGKAH 7 — UPDATE LOKASI TOKO (WAJIB)
+=====================================================
+
+# Edit koordinat Maps
+nano components/MapEmbed.tsx
+
+  Cari baris:
+  const LAT = -6.2088
+  const LNG = 106.8456
+
+  Ganti dengan koordinat toko kamu.
+  (Cara: buka Google Maps → klik lokasi → copy lat,lng)
+
+# Edit alamat di Footer
+nano components/Footer.tsx
+  Cari: "Jl. Contoh No. 123"
+  Ganti dengan alamat asli toko
+
+# Edit alamat di halaman Lokasi
+nano app/lokasi/page.tsx
+  Cari: "Jl. Contoh No. 123"
+  Ganti dengan alamat asli toko
+
+=====================================================
+LANGKAH 8 — DEPLOY KE GITHUB + VERCEL
+=====================================================
+
+# Setup git (pertama kali)
+git config --global user.name "Nama Kamu"
+git config --global user.email "email@kamu.com"
+
+# Init & push ke GitHub
+git init
+git add .
+git commit -m "🔋 Initial commit Toko Athifabattery"
+git branch -M main
+git remote add origin https://github.com/USERNAME/toko-athifabattery.git
+git push -u origin main
+
+# Lalu buka vercel.com:
+# 1. Login dengan GitHub
+# 2. Import repository toko-athifabattery
+# 3. Tambahkan semua Environment Variables (sama dengan .env.local)
+# 4. Klik Deploy → tunggu ~2 menit
+# 5. Website live! ✅
+
+=====================================================
+PERINTAH BERGUNA SEHARI-HARI
+=====================================================
+
+npm run dev        → Jalankan development server
+npm run build      → Build untuk production
+npm start          → Jalankan production (setelah build)
+npm run lint       → Cek error kode
+
+# Jika port 3000 sudah dipakai:
+npx kill-port 3000
+npm run dev
+
+# Cek log error
+npm run dev 2>&1 | tee dev.log
+
+# Update dependencies
+npm update
+
+# Buka file manager (pastikan storage sudah setup)
+cd ~/storage/downloads/toko-athifabattery
+
+=====================================================
+SETUP TELEGRAM BOT (Opsional - Notif Pesanan)
+=====================================================
+
+1. Buka Telegram → cari @BotFather
+2. Ketik: /newbot
+3. Ikuti instruksi → copy TOKEN
+4. Cari @userinfobot → kirim /start → copy chat_id
+
+Tambahkan ke .env.local:
+  TELEGRAM_BOT_TOKEN=1234567890:ABCdef...
+  TELEGRAM_CHAT_ID=987654321
+
+nano .env.local  → tambahkan → simpan → restart dev
+
+=====================================================
+TROUBLESHOOTING
+=====================================================
+
+❌ Error: Cannot find module
+   → npm install
+
+❌ Error: SUPABASE_URL not found
+   → nano .env.local → isi URL & key → restart
+
+❌ Port 3000 already in use
+   → npx kill-port 3000
+   → npm run dev
+
+❌ Node.js version terlalu lama
+   → pkg install nodejs  (Termux selalu versi terbaru)
+
+❌ npm install gagal / lambat
+   → npm install --prefer-offline
+   → atau: npm cache clean --force && npm install
+
+❌ Build error TypeScript
+   → npm run lint → perbaiki error yang muncul
+
+❌ Gambar tidak muncul di Supabase Storage
+   → Pastikan bucket 'products' sudah di-set Public
+
+=====================================================
+INFO PROYEK
+=====================================================
+
+Nama    : Toko Athifabattery
+WA      : +6287882385071
+Tech    : Next.js 14 + Supabase + Tailwind CSS
+Deploy  : GitHub + Vercel
+Admin   : /admin (login dengan Supabase Auth)
+
+File penting:
+  .env.local              → Secrets (jangan di-commit)
+  supabase/schema.sql     → Setup database
+  components/MapEmbed.tsx → Koordinat lokasi toko
+  lib/whatsapp.ts         → Nomor WA & auto message
+  app/layout.tsx          → SEO meta tags
+
+══════════════════════════════════════════════════
+🔋 Selamat! Toko Athifabattery siap digunakan.
+══════════════════════════════════════════════════
