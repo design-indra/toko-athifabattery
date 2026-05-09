@@ -2,7 +2,7 @@ import { supabase } from '@/lib/supabase'
 
 export default async function ReviewList() {
   const { data: reviews } = await supabase
-    .from('reviews')
+    .from('reviews_toko')
     .select('*')
     .eq('is_approved', true)
     .order('created_at', { ascending: false })

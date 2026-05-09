@@ -25,19 +25,19 @@ export default function AdminUlasan() {
   useEffect(() => { loadReviews() }, [])
 
   async function loadReviews() {
-    const { data } = await supabase.from('reviews').select('*').order('created_at', { ascending: false })
+    const { data } = await supabase.from('reviews_toko').select('*').order('created_at', { ascending: false })
     setReviews(data ?? [])
     setLoading(false)
   }
 
   async function approve(id: string) {
-    await supabase.from('reviews').update({ is_approved: true }).eq('id', id)
+    await supabase.from('reviews_toko').update({ is_approved: true }).eq('id', id)
     setReviews(reviews.map(r => r.id === id ? { ...r, is_approved: true } : r))
   }
 
   async function remove(id: string) {
     if (!confirm('Hapus ulasan ini?')) return
-    await supabase.from('reviews').delete().eq('id', id)
+    await supabase.from('reviews_toko').delete().eq('id', id)
     setReviews(reviews.filter(r => r.id !== id))
   }
 

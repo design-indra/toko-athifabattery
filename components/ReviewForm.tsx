@@ -11,7 +11,7 @@ export default function ReviewForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
-    await supabase.from('reviews').insert([form])
+    await supabase.from('reviews_toko').insert([form])
     setSuccess(true)
     setLoading(false)
     setForm({ name: '', lokasi: '', judul: '', pesan: '', rating: 5 })
