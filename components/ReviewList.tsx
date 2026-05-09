@@ -1,13 +1,29 @@
+'use client'
+import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
-export default async function ReviewList() {
-  const { data: reviews } = await supabase
-    .from('reviews_toko')
-    .select('*')
-    .eq('is_approved', true)
-    .order('created_at', { ascending: false })
+interface Review {
+  id: string
+  name: string
+  lokasi: string
+  judul: string
+  pesan: string
+  rating: number
+}
 
-  if (!reviews || reviews.length === 0) return null
+export default function ReviewList() {
+  const [reviews, setReviews] = useState<Review[]>([])
+
+  useEffect(() => {
+    supabase
+      .from('reviews_toko')
+      .select('*')
+      .eq('is_approved', true)
+      .order('created_at', { ascending: false })
+      .then(({ data }) => setReviews(data ?? []))
+  }, [])
+
+  if (reviews.length === 0) return null
 
   return (
     <div className="space-y-3">
@@ -20,7 +36,9 @@ export default async function ReviewList() {
           </div>
           <p className="font-bold text-sm">{r.judul}</p>
           <p className="text-sm text-slate-600 dark:text-slate-300 italic">"{r.pesan}"</p>
-          <p className="text-xs font-semibold text-slate-500 pt-1">{r.name}{r.lokasi ? ` / ${r.lokasi}` : ''}</p>
+          <p className="text-xs font-semibold text-slate-500 pt-1">
+            {r.name}{r.lokasi ? ` / ${r.lokasi}` : ''}
+          </p>
         </div>
       ))}
     </div>
