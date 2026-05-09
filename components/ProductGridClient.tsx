@@ -39,7 +39,7 @@ export default function ProductGridClient({ products }: { products: Product[] })
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-2 gap-3">
         {filtered.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
