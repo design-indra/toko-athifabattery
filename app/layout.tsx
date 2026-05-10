@@ -3,7 +3,7 @@ import { ThemeProvider } from 'next-themes'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://athifabattery.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://athifabattery.shop'),
   title: {
     default: 'Toko Athifabattery — Aki Mobil & Motor Terpercaya',
     template: '%s | Toko Athifabattery',
@@ -35,7 +35,7 @@ const localBusinessSchema = {
   name: 'Toko Athifabattery',
   description: 'Toko aki mobil, motor, dan truk. GS Astra, Yuasa, Massiv.',
   telephone: '+6287882385071',
-  url: 'https://athifabattery.vercel.app',
+  url: 'https://athifabattery.shop',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Bojonegara',
