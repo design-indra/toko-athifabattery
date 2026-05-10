@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <meta name="theme-color" content="#f59e0b" />
-<meta name="google-site-verification" content="roF1nyvdWZzdR8JqIPplOJiOWP1HZDy1gYqoV1tkF28" />
+<meta name="google-site-verification" content="RdeSZH1DrfJogGHis3mJ5pR7A80J1ZJxq8VXEXcAS30" />
 <script src="/register-sw.js" defer />
       </head>
       <body className="font-sans antialiased">
